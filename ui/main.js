@@ -5,7 +5,7 @@ button.onclick = function () {
     //create a request
     var request = new XMLHttpRequest();
     //capture the request and store it as avariable
-    request,onreadystatechange = function(){
+    request.onreadystatechange = function(){
       if(request.readystate === XMLHttpRequest.DONE){
           if(request.status=== 200)
           {
