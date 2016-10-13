@@ -9,7 +9,8 @@ button.onclick = function () {
     //capture the request and store it as avariable
     request.onreadystatechange = function () {
       if(request.readystate === XMLHttpRequest.DONE) {
-          if(request.status === 200) {
+          //take some action
+          if (request.status === 200) {
                var counter = request.responseText;
                var span = document.getElementById("count");
                span.innerHTML = counter.toString();
@@ -35,7 +36,7 @@ submit.onclick = function()
   var list ='';
   for(var i=0;i<names.length;i++)
   {
-      list += '<li>' + names[i] + </li>;
+      list += '<li>' + names[i] + '</li>';
   }
   var ul = document.getElementById('namelist');
   ul.innerHTML = list;
