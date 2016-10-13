@@ -31,8 +31,17 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function()
 {
   //make a request and send the name
-  //capture the list of names and render it as a list
-  var names = ['name1','name2','name3','name4'];
+   //create a request
+    var request = new XMLHttpRequest();
+    
+    //capture the request and store it as avariable
+    request.onreadystatechange = function () {
+      if(request.readystate === XMLHttpRequest.DONE) {
+          //take some action
+          if (request.status === 200) {
+               //capture the list of names and render it as a list
+  var names = request.responseText;
+  names =JSON.parse(names);
   var list ='';
   for(var i=0;i<names.length;i++)
   {
@@ -40,5 +49,13 @@ submit.onclick = function()
   }
   var ul = document.getElementById('namelist');
   ul.innerHTML = list;
+          }
+      }  
+    //not done yet
+    };
+  //make a request
+  request.open('GET','http://jaffarsadhik1.imad.hasura-app.io/submit-name?name =' + name, true);
+  request.send(null);
+ 
   
 };
